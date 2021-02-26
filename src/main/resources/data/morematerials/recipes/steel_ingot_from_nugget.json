@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "###",
+      "###",
+      "###"
+    ],
+    "key": {
+      "#": {
+        "item": "morematerials:steel_nugget"
+      }
+    },
+    "result": {
+      "item": "morematerials:steel_ingot"
+    }
+  }

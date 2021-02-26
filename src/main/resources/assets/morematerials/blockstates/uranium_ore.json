@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "":{
+            "model": "morematerials:block/uranium_ore"
+        }
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:smithing",
+    "base": {
+      "item": "minecraft:diamond_pickaxe"
+    },
+    "addition": {
+      "item": "morematerials:infernium_item"
+    },
+    "result": {
+      "item": "morematerials:infernium_pickaxe"
+    }
+  }

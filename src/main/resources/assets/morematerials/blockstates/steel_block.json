@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "": {
+            "model": "morematerials:block/steel_block"
+        }
+    }
+}

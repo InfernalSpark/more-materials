@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "#X#",
+      "Y#Y",
+      "#X#"
+    ],
+    "key": {
+      "#": {
+        "item": "morematerials:unstable_uranium"
+      },
+      "X": {
+        "item": "morematerials:steel_ingot"
+      },
+      "Y": {
+        "item": "minecraft:gold_ingot"
+      }
+    },
+    "result": {
+      "item": "morematerials:infernium_item"
+    }
+  }

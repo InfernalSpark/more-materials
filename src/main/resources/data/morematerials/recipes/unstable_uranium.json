@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:smelting",
+    "ingredient": {
+        "item": "morematerials:uranium_item"
+    },
+    "result": "morematerials:unstable_uranium",
+    "experience": 0.4,
+    "cookingtime": 100
+}
