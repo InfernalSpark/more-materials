@@ -21,7 +21,7 @@
 * You can upgrade your Diamond tools to Infernium by putting them in a smithing table
 
 ## Bugs
-* If you spot any bugs, consider opening and Issue
+* If you spot any bugs, consider opening an Issue
 
 ## Ideas/help
 * If you have any Ideas, or you need some help, start a discussion!
