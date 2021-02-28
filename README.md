@@ -1,5 +1,5 @@
 # More Materials[Fabric]
-This mod adds more(and better) materials to minecraft!
+* This mod adds more(and better) materials to minecraft!
 
 ## Installation
 1. You can download the executable .jar file from the [Releases](https://github.com/InfernalSpark/more-materials/releases) section. NOTE: DO NOT download the -sources or -dev versions
@@ -21,10 +21,10 @@ This mod adds more(and better) materials to minecraft!
 * You can upgrade your Diamond tools to Infernium by putting them in a smithing table
 
 ## Bugs
-If you spot any bugs, consider opening and Issue
+* If you spot any bugs, consider opening and Issue
 
 ## Ideas/help
-If you have any Ideas, or you need some help, start a discussion!
+* If you have any Ideas, or you need some help, start a discussion!
 
 ## Development
 * Once you have made your own modifications to the code, run `gradlew build`(For Windows only, for Mac and Linux, run `./gradlew build`)
@@ -34,8 +34,8 @@ If you have any Ideas, or you need some help, start a discussion!
 * As of now, there is no way you can financially sponsor this project. If you have any ideas, start a pull request!
 
 ### Credits
-**Fabric Team**: For making an easy-to-use modloader and development environment
-**My friends**: For giving me the support that I very much needed
-**You**: For even viewing this page. If you liked this project, consider starring this repo
+* **Fabric Team**: For making an easy-to-use modloader and development environment
+* **My friends**: For giving me the support that I very much needed
+* **You**: For even viewing this page. If you liked this project, consider starring this repo
 
 ### Thanks!
