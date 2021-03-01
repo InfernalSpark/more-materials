@@ -4,12 +4,20 @@ package InfernalSpark.more.materials;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.fabricmc.fabric.api.biome.v1.OverworldBiomes;
+import net.fabricmc.fabric.api.biome.v1.OverworldClimate;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.EntityDimensions;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.SpawnGroup;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -22,12 +30,21 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeEffects;
+import net.minecraft.world.biome.GenerationSettings;
+import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.surfacebuilder.ConfiguredSurfaceBuilder;
+import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
+import net.minecraft.world.gen.surfacebuilder.TernarySurfaceConfig;
+import org.lwjgl.system.CallbackI;
 
 public class MoreMaterials implements ModInitializer {
 
@@ -60,7 +77,52 @@ public class MoreMaterials implements ModInitializer {
 	public static final ArmorItem INFERNIUM_LEGGINGS = new ArmorItem(InferniumArmorMaterials.INSTANCE, EquipmentSlot.LEGS, new Item.Settings().group(ItemGroup.COMBAT));
 	public static final ArmorItem INFERNIUM_BOOTS = new ArmorItem(InferniumArmorMaterials.INSTANCE, EquipmentSlot.FEET, new Item.Settings().group(ItemGroup.COMBAT));
 
+	public static final Block VIBRANIUM_DIRT = new Block(FabricBlockSettings.of(Material.STONE).strength(1.5F, 6F ).sounds(BlockSoundGroup.STONE).breakByTool(FabricToolTags.PICKAXES));
+	public static final	Block VIBRANIUM_GRASS= new Block(FabricBlockSettings.of(Material.STONE).strength(1.5F, 6F).sounds(BlockSoundGroup.STONE).breakByTool(FabricToolTags.PICKAXES));
+
+
 	private static ConfiguredFeature<?, ?> URANIUM_ORE_OVERWORLD = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, URANIUM_ORE.getDefaultState(), 4)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0, 0, 15))).spreadHorizontally().repeat(1);
+
+	private static final ConfiguredSurfaceBuilder<TernarySurfaceConfig> VIBRANIUM_SURFACE_BUILDER = SurfaceBuilder.DEFAULT.withConfig(new TernarySurfaceConfig(MoreMaterials.VIBRANIUM_GRASS.getDefaultState(), MoreMaterials.VIBRANIUM_DIRT.getDefaultState(), Blocks.GRAVEL.getDefaultState()));
+	private static final Biome WAKANDA = createWakanda();
+	private static Biome createWakanda() {
+		SpawnSettings.Builder spawnSettings = new SpawnSettings.Builder();
+		DefaultBiomeFeatures.addFarmAnimals(spawnSettings);
+		DefaultBiomeFeatures.addMonsters(spawnSettings, 95, 5, 100);
+
+		GenerationSettings.Builder generationSettings = new GenerationSettings.Builder();
+		generationSettings.surfaceBuilder(VIBRANIUM_SURFACE_BUILDER);
+		DefaultBiomeFeatures.addDefaultUndergroundStructures(generationSettings);
+		DefaultBiomeFeatures.addLandCarvers(generationSettings);
+		DefaultBiomeFeatures.addDefaultLakes(generationSettings);
+		DefaultBiomeFeatures.addDungeons(generationSettings);
+		DefaultBiomeFeatures.addMineables(generationSettings);
+		DefaultBiomeFeatures.addDefaultOres(generationSettings);
+		DefaultBiomeFeatures.addDefaultDisks(generationSettings);
+		DefaultBiomeFeatures.addSprings(generationSettings);
+		DefaultBiomeFeatures.addFrozenTopLayer(generationSettings);
+
+		return (new Biome.Builder())
+				.precipitation(Biome.Precipitation.RAIN)
+				.category(Biome.Category.NONE)
+				.depth(0.125F)
+				.scale(0.05F)
+				.temperature(0.8F)
+				.downfall(0.4F)
+				.effects((new BiomeEffects.Builder())
+						.waterColor(0x3f76e4)
+						.waterFogColor(0x050533)
+						.fogColor(0xc0d8ff)
+						.skyColor(0x77adff)
+						.build())
+				.spawnSettings(spawnSettings.build())
+				.generationSettings(generationSettings.build())
+				.build();
+	}
+
+	private static final RegistryKey<Biome> WAKANDA_KEY = RegistryKey.of(Registry.BIOME_KEY, new Identifier("morematerials", "wakanda"));
+
+	private static Enchantment FROST = Registry.register(Registry.ENCHANTMENT, new Identifier("morematerials", "frost"), new FrostEnchantment());
 
 	@Override
 	public void onInitialize() {
@@ -96,9 +158,22 @@ public class MoreMaterials implements ModInitializer {
 		Registry.register(Registry.ITEM, new Identifier("morematerials", "infernium_leggings"), INFERNIUM_LEGGINGS);
 		Registry.register(Registry.ITEM, new Identifier("morematerials", "infernium_boots"), INFERNIUM_BOOTS);
 
+		Registry.register(Registry.BLOCK, new Identifier("morematerials", "vibranium_dirt"), VIBRANIUM_DIRT);
+		Registry.register(Registry.ITEM, new Identifier("morematerials", "vibranium_dirt"), new BlockItem(VIBRANIUM_DIRT, new Item.Settings().group(ItemGroup.MATERIALS)));
+		Registry.register(Registry.BLOCK, new Identifier("morematerials", "vibranium_grass"), VIBRANIUM_GRASS);
+		Registry.register(Registry.ITEM, new Identifier("morematerials", "vibranium_grass"), new BlockItem(VIBRANIUM_GRASS, new Item.Settings().group(ItemGroup.MATERIALS)));
+
+
 		RegistryKey<ConfiguredFeature<?, ?>> uraniumOreOverworld = RegistryKey.of(Registry.CONFIGURED_FEATURE_WORLDGEN, new Identifier("morematerials", "uranium_ore"));
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, uraniumOreOverworld.getValue(), URANIUM_ORE_OVERWORLD);
 		BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_ORES, uraniumOreOverworld);
+
+		Registry.register(BuiltinRegistries.CONFIGURED_SURFACE_BUILDER, new Identifier("morematerials", "wakanda"), VIBRANIUM_SURFACE_BUILDER);
+		Registry.register(BuiltinRegistries.BIOME, WAKANDA_KEY.getValue(), WAKANDA);
+		OverworldBiomes.addContinentalBiome(WAKANDA_KEY, OverworldClimate.DRY, 2D);
+		OverworldBiomes.addContinentalBiome(WAKANDA_KEY, OverworldClimate.TEMPERATE, 2D);
+
+
 
 		System.out.println("Hello world!");
 	}

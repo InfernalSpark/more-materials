@@ -1,0 +1,29 @@
+{
+  "type": {
+    "name": "morematerials:new_wakanda",
+    "ultrawarm": false,
+    "natural": false,
+    "piglin_safe": true,
+    "respawn_anchor_works": false,
+    "bed_works": true,
+    "has_raids": false,
+    "has_skylight": true,
+    "has_ceiling": false,
+    "coordinate_scale": 1,
+    "ambient_light": 0,
+    "logical_height": 256,
+    "infiniburn": "minecraft:infiniburn_overworld",
+    "min_y": 0,
+    "height": 256
+  },
+  "generator": {
+    "type": "minecraft:noise",
+    "seed": -478462708,
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "seed": -478462708,
+      "biome": "minecraft:plains"
+    },
+    "settings": "minecraft:overworld"
+  }
+}
