@@ -28,7 +28,8 @@
 * 'Fighter's Beef' is a new overpowered food source which can be obtained by surrounding an Infernium Shard with steak. This is incredibly useful in combat, giving the player a wide variety of status effects
 * 'Miner's Beef' is another new food source which can be obtained by surrounding Vibranium core with steak. This is incredibly useful in mining trips, giving the player a smaller range of status effects  
 
-
+#### Frost Enchantment
+* Added a new frost enchantment, which will slow down attacking mobs and players
 
 ## Bugs
 * If you spot any bugs, consider opening an Issue
