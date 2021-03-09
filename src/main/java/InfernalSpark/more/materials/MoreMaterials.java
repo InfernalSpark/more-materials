@@ -4,20 +4,18 @@ package InfernalSpark.more.materials;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.fabricmc.fabric.api.biome.v1.OverworldBiomes;
+import net.fabricmc.fabric.api.biome.v1.OverworldClimate;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
-import net.kyrptonaught.customportalapi.CustomPortalApiRegistry;
-import net.kyrptonaught.customportalapi.CustomPortalApiRegistry.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EquipmentSlot;
-<<<<<<< Updated upstream
-=======
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
->>>>>>> Stashed changes
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -31,12 +29,20 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeEffects;
+import net.minecraft.world.biome.GenerationSettings;
+import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.surfacebuilder.ConfiguredSurfaceBuilder;
+import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
+import net.minecraft.world.gen.surfacebuilder.TernarySurfaceConfig;
 
 public class MoreMaterials implements ModInitializer {
 
@@ -69,15 +75,11 @@ public class MoreMaterials implements ModInitializer {
 	public static final ArmorItem INFERNIUM_LEGGINGS = new ArmorItem(InferniumArmorMaterials.INSTANCE, EquipmentSlot.LEGS, new Item.Settings().group(ItemGroup.COMBAT));
 	public static final ArmorItem INFERNIUM_BOOTS = new ArmorItem(InferniumArmorMaterials.INSTANCE, EquipmentSlot.FEET, new Item.Settings().group(ItemGroup.COMBAT));
 
-<<<<<<< Updated upstream
 	private static ConfiguredFeature<?, ?> URANIUM_ORE_OVERWORLD = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, URANIUM_ORE.getDefaultState(), 4)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0, 0, 15))).spreadHorizontally().repeat(1);
 
-=======
 	public static final Block VIBRANIUM_DIRT = new Block(FabricBlockSettings.of(Material.STONE).strength(1.5F, 6F ).sounds(BlockSoundGroup.STONE).breakByTool(FabricToolTags.PICKAXES));
 	public static final	Block VIBRANIUM_GRASS= new Block(FabricBlockSettings.of(Material.STONE).strength(1.5F, 6F).sounds(BlockSoundGroup.STONE).breakByTool(FabricToolTags.PICKAXES));
 
-
-	private static final ConfiguredFeature<?, ?> URANIUM_ORE_OVERWORLD = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, URANIUM_ORE.getDefaultState(), 4)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0, 0, 15))).spreadHorizontally().repeat(1);
 
 	private static final ConfiguredSurfaceBuilder<TernarySurfaceConfig> VIBRANIUM_SURFACE_BUILDER = SurfaceBuilder.DEFAULT.withConfig(new TernarySurfaceConfig(MoreMaterials.VIBRANIUM_GRASS.getDefaultState(), MoreMaterials.VIBRANIUM_DIRT.getDefaultState(), Blocks.GRAVEL.getDefaultState()));
 	private static final Biome WAKANDA = createWakanda();
@@ -127,7 +129,6 @@ public class MoreMaterials implements ModInitializer {
 	public static final Item VIBRANIUM_CORE = new Item(new Item.Settings().group(ItemGroup.MATERIALS));
 	public static final Item VIBRANIUM_SHARD = new Item(new Item.Settings().group(ItemGroup.MATERIALS));
 
->>>>>>> Stashed changes
 	@Override
 	public void onInitialize() {
 
@@ -166,8 +167,6 @@ public class MoreMaterials implements ModInitializer {
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, uraniumOreOverworld.getValue(), URANIUM_ORE_OVERWORLD);
 		BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_ORES, uraniumOreOverworld);
 
-<<<<<<< Updated upstream
-=======
 		Registry.register(BuiltinRegistries.CONFIGURED_SURFACE_BUILDER, new Identifier("morematerials", "wakanda"), VIBRANIUM_SURFACE_BUILDER);
 		Registry.register(BuiltinRegistries.BIOME, WAKANDA_KEY.getValue(), WAKANDA);
 		OverworldBiomes.addContinentalBiome(WAKANDA_KEY, OverworldClimate.DRY, 2D);
@@ -180,7 +179,6 @@ public class MoreMaterials implements ModInitializer {
         Registry.register(Registry.ITEM, new Identifier("morematerials", "vibranium_shard"), VIBRANIUM_SHARD);
 
 
->>>>>>> Stashed changes
 		System.out.println("Hello world!");
 	}
 }
