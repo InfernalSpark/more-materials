@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:cooked_beef"
+    },
+    "X": {
+      "item": "morematerials:vibranium_core"
+    }
+  },
+  "result": {
+    "item": "morematerials:fighter_beef",
+    "count": 8
+  }
+}

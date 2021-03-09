@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "morematerials:vibranium_shard"
+    }
+  },
+  "result": {
+    "item": "morematerials:vibranium_core"
+  }
+}

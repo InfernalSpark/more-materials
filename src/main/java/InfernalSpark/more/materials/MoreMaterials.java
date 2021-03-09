@@ -6,10 +6,18 @@ import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
+import net.kyrptonaught.customportalapi.CustomPortalApiRegistry;
+import net.kyrptonaught.customportalapi.CustomPortalApiRegistry.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;
 import net.minecraft.entity.EquipmentSlot;
+<<<<<<< Updated upstream
+=======
+import net.minecraft.entity.SpawnGroup;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
+>>>>>>> Stashed changes
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -17,6 +25,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolItem;
+import net.minecraft.potion.Potion;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
@@ -60,8 +69,65 @@ public class MoreMaterials implements ModInitializer {
 	public static final ArmorItem INFERNIUM_LEGGINGS = new ArmorItem(InferniumArmorMaterials.INSTANCE, EquipmentSlot.LEGS, new Item.Settings().group(ItemGroup.COMBAT));
 	public static final ArmorItem INFERNIUM_BOOTS = new ArmorItem(InferniumArmorMaterials.INSTANCE, EquipmentSlot.FEET, new Item.Settings().group(ItemGroup.COMBAT));
 
+<<<<<<< Updated upstream
 	private static ConfiguredFeature<?, ?> URANIUM_ORE_OVERWORLD = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, URANIUM_ORE.getDefaultState(), 4)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0, 0, 15))).spreadHorizontally().repeat(1);
 
+=======
+	public static final Block VIBRANIUM_DIRT = new Block(FabricBlockSettings.of(Material.STONE).strength(1.5F, 6F ).sounds(BlockSoundGroup.STONE).breakByTool(FabricToolTags.PICKAXES));
+	public static final	Block VIBRANIUM_GRASS= new Block(FabricBlockSettings.of(Material.STONE).strength(1.5F, 6F).sounds(BlockSoundGroup.STONE).breakByTool(FabricToolTags.PICKAXES));
+
+
+	private static final ConfiguredFeature<?, ?> URANIUM_ORE_OVERWORLD = Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, URANIUM_ORE.getDefaultState(), 4)).decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(0, 0, 15))).spreadHorizontally().repeat(1);
+
+	private static final ConfiguredSurfaceBuilder<TernarySurfaceConfig> VIBRANIUM_SURFACE_BUILDER = SurfaceBuilder.DEFAULT.withConfig(new TernarySurfaceConfig(MoreMaterials.VIBRANIUM_GRASS.getDefaultState(), MoreMaterials.VIBRANIUM_DIRT.getDefaultState(), Blocks.GRAVEL.getDefaultState()));
+	private static final Biome WAKANDA = createWakanda();
+	private static Biome createWakanda() {
+		SpawnSettings.Builder spawnSettings = new SpawnSettings.Builder();
+		DefaultBiomeFeatures.addFarmAnimals(spawnSettings);
+		DefaultBiomeFeatures.addMonsters(spawnSettings, 95, 5, 100);
+
+		GenerationSettings.Builder generationSettings = new GenerationSettings.Builder();
+		generationSettings.surfaceBuilder(VIBRANIUM_SURFACE_BUILDER);
+		DefaultBiomeFeatures.addDefaultUndergroundStructures(generationSettings);
+		DefaultBiomeFeatures.addLandCarvers(generationSettings);
+		DefaultBiomeFeatures.addDefaultLakes(generationSettings);
+		DefaultBiomeFeatures.addDungeons(generationSettings);
+		DefaultBiomeFeatures.addMineables(generationSettings);
+		DefaultBiomeFeatures.addDefaultOres(generationSettings);
+		DefaultBiomeFeatures.addDefaultDisks(generationSettings);
+		DefaultBiomeFeatures.addSprings(generationSettings);
+		DefaultBiomeFeatures.addFrozenTopLayer(generationSettings);
+
+		return (new Biome.Builder())
+				.precipitation(Biome.Precipitation.RAIN)
+				.category(Biome.Category.NONE)
+				.depth(0.125F)
+				.scale(0.05F)
+				.temperature(0.8F)
+				.downfall(0.4F)
+				.effects((new BiomeEffects.Builder())
+						.waterColor(0x3f76e4)
+						.waterFogColor(0x050533)
+						.fogColor(0xc0d8ff)
+						.skyColor(0x77adff)
+						.build())
+				.spawnSettings(spawnSettings.build())
+				.generationSettings(generationSettings.build())
+				.build();
+	}
+
+	private static final RegistryKey<Biome> WAKANDA_KEY = RegistryKey.of(Registry.BIOME_KEY, new Identifier("morematerials", "wakanda"));
+
+	private static final Enchantment FROST = Registry.register(Registry.ENCHANTMENT, new Identifier("morematerials", "frost"), new FrostEnchantment());
+
+	public static final Item FIGHTER_BEEF = new Item(new Item.Settings().group(ItemGroup.FOOD).food(FighterBeef.FIGHTER_BEEF));
+
+	public static final Item MINER_BEEF = new Item(new Item.Settings().group(ItemGroup.FOOD).food(MinerBeef.MINER_BEEF));
+
+	public static final Item VIBRANIUM_CORE = new Item(new Item.Settings().group(ItemGroup.MATERIALS));
+	public static final Item VIBRANIUM_SHARD = new Item(new Item.Settings().group(ItemGroup.MATERIALS));
+
+>>>>>>> Stashed changes
 	@Override
 	public void onInitialize() {
 
@@ -100,6 +166,21 @@ public class MoreMaterials implements ModInitializer {
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, uraniumOreOverworld.getValue(), URANIUM_ORE_OVERWORLD);
 		BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_ORES, uraniumOreOverworld);
 
+<<<<<<< Updated upstream
+=======
+		Registry.register(BuiltinRegistries.CONFIGURED_SURFACE_BUILDER, new Identifier("morematerials", "wakanda"), VIBRANIUM_SURFACE_BUILDER);
+		Registry.register(BuiltinRegistries.BIOME, WAKANDA_KEY.getValue(), WAKANDA);
+		OverworldBiomes.addContinentalBiome(WAKANDA_KEY, OverworldClimate.DRY, 2D);
+		OverworldBiomes.addContinentalBiome(WAKANDA_KEY, OverworldClimate.TEMPERATE, 2D);
+
+		Registry.register(Registry.ITEM, new Identifier("morematerials", "fighter_beef"), FIGHTER_BEEF);
+		Registry.register(Registry.ITEM, new Identifier("morematerials", "miner_beef"), MINER_BEEF);
+
+		Registry.register(Registry.ITEM, new Identifier("morematerials", "vibranium_core"), VIBRANIUM_CORE);
+        Registry.register(Registry.ITEM, new Identifier("morematerials", "vibranium_shard"), VIBRANIUM_SHARD);
+
+
+>>>>>>> Stashed changes
 		System.out.println("Hello world!");
 	}
 }

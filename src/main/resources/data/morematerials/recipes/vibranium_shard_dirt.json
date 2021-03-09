@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "morematerials:vibranium_dirt"
+  },
+  "result": "morematerials:vibranium_shard",
+  "experience": 0.4,
+  "cookingtime": 100
+}

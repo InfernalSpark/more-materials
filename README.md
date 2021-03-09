@@ -20,6 +20,16 @@
 ![Infernium Crafting recipe](https://lh3.googleusercontent.com/37s-bxrplLsrQuAJQ0UlTDzz8SmaXbYoqG699vfsO8-EOunyuyUwGdZTrmW3w7zPPHpdF3Gyf7_U1LP7yexv9frfGk4cOjrKHwTRqL98KWeTXsBaQR3UoEZ8PvabgiMpXXN0Qhst3ll03Z0RVBeN9DUFiZMqGMXo0z2gcgKn2GKBy1JJdTQnZvekt0gGRwEMEeDUq-9yC6_iXA0H6kHnLyB4uwDlpC1V-DKrD3czZ_S_Yl32ig1ln1Hfy9N-FXf3DSBbIepFn4u00mmWyXgqc1UCdSEKnJga2du8_V9QwSMOksx0HIu6pDsTnxJjgZjbPOBOt6OPE4wytTS6eUhCCRb7qHak6yxpiqfFviM2pNdZLNAWfI5R9eEHf0cAFbgTuWhKr_ZgEVBVnsKXV-dh7PBC03RRxIaypyxl2tle2s8ZrP0WYkpBydgL_285QKig2cQZ-B5Sn6Ggs-PUtabZxqqqpJIauYXRLBWRFF45eRPsiINP1INk34qoLfk0CImglJeK3s-bd_bGWLmtPZ6E3z9f6ZNWuKNLGsdcdkaTCjLkXD3-gJE6oXafFUh6YSazWXSQQAO1ggkxNWSBhqmqbUhgpi7XZ1SySXPE0RCtnVqES9U1Me5po4g_LreIRh63jze13lNYkUL3wpLoqDdQu3gREgADnmMN-WbVL3IBkHYq1fl87vYSyvNcu7ND=w357-h162-no?authuser=0) 
 * You can upgrade your Diamond tools to Infernium by putting them in a smithing table
 
+#### Vibranium
+* Vibranium shards can be obtained by smelting either Vibranium grass or Vibranium dirt, found in the 'Wakanda' biome
+* You can place nine vibranium shards in the crafting table to obtain Vibranium core
+
+#### New Steak/Beef
+* 'Fighter's Beef' is a new overpowered food source which can be obtained by surrounding an Infernium Shard with steak. This is incredibly useful in combat, giving the player a wide variety of status effects
+* 'Miner's Beef' is another new food source which can be obtained by surrounding Vibranium core with steak. This is incredibly useful in mining trips, giving the player a smaller range of status effects  
+
+
+
 ## Bugs
 * If you spot any bugs, consider opening an Issue
 
