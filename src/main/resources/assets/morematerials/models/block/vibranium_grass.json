@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "morematerials:block/vibranium_grass",
+    "bottom": "morematerials:block/vibranium_dirt",
+    "side": "morematerials:block/vibranium_grass_side"
+  }
+}

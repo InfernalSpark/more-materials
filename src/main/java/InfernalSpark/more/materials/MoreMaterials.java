@@ -43,6 +43,7 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.surfacebuilder.ConfiguredSurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilder.TernarySurfaceConfig;
+import org.lwjgl.system.CallbackI;
 
 public class MoreMaterials implements ModInitializer {
 
@@ -177,6 +178,11 @@ public class MoreMaterials implements ModInitializer {
 
 		Registry.register(Registry.ITEM, new Identifier("morematerials", "vibranium_core"), VIBRANIUM_CORE);
         Registry.register(Registry.ITEM, new Identifier("morematerials", "vibranium_shard"), VIBRANIUM_SHARD);
+
+        Registry.register(Registry.ITEM, new Identifier("morematerials", "vibranium_grass"), new BlockItem(VIBRANIUM_GRASS, new Item.Settings().group(ItemGroup.MISC)));
+        Registry.register(Registry.ITEM, new Identifier("morematerials", "vibranium_dirt"), new BlockItem(VIBRANIUM_DIRT, new Item.Settings().group(ItemGroup.MISC)));
+		Registry.register(Registry.BLOCK, new Identifier("morematerials", "vibranium_grass"), VIBRANIUM_GRASS);
+		Registry.register(Registry.BLOCK, new Identifier("morematerials", "vibranium_dirt"), VIBRANIUM_DIRT);
 
 
 		System.out.println("Hello world!");

@@ -24,9 +24,6 @@
     "item.morematerials.infernium_shard":"Infernium Shard",
     "item.morematerials.uranium_item":"Uranium",
     "item.morematerials.unstable_uranium":"Unstable Uranium",
-<<<<<<< Updated upstream
-    "block.morematerials.uranium_ore":"Uranium Ore"
-=======
     "block.morematerials.uranium_ore":"Uranium Ore",
     "block.morematerials.vibranium_dirt": "Vibranium Dirt",
     "block.morematerials.vibranium_grass": "Vibranium Grass",
@@ -34,7 +31,5 @@
     "item.morematerials.fighter_beef": "Fighter's Beef",
     "item.morematerials.miner_beef" : "Miner's Beef",
     "item.morematerials.vibranium_core" : "Vibranium Core",
-    "item.morematerials.vibranium_shard": "Vibranium Shard",
-    "biome.morematerials.wakanda": "Wakanda Biome"
->>>>>>> Stashed changes
+    "item.morematerials.vibranium_shard": "Vibranium Shard"
 }
